@@ -81,7 +81,9 @@
     "pages/changce/article/list",
     "pages/changce/article/detail",
     "pages/changce/sign/index",
-    "pages/changce/sign/records"
+    "pages/changce/sign/records",
+    "pages/my/index",
+    "pages/my/recharge"
   ],
   "window": {
     "backgroundColor": "#fafafa",

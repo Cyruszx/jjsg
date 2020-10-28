@@ -28,7 +28,7 @@ Page({
                             getApp().onShow();
                         }
 
-                        a  && (console.log(999),wx.reLaunch({
+                        a && (wx.reLaunch({
                             url: "/pages/index/index"
                         }), clearInterval(e), t.setData({
                             userInfo: a
