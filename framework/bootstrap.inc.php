@@ -61,7 +61,7 @@ define('ATTACHMENT_ROOT', IA_ROOT .'/attachment/');
 error_reporting(0);
 
 
-if(!in_array($_W['config']['setting']['cache'], array('mysql', 'memcache', 'redis'))) {
+if(!in_array($_W['config']['setting']['cache'], array('mysql', 'memcache', 'Redis'))) {
 	$_W['config']['setting']['cache'] = 'mysql';
 }
 load()->func('cache');

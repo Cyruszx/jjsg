@@ -23,8 +23,8 @@ class WeSession implements SessionHandlerInterface {
 		$cache_setting = $GLOBALS['_W']['config']['setting'];
 		if (extension_loaded('memcache') && !empty($cache_setting['memcache']['server']) && !empty($cache_setting['memcache']['session'])) {
 			self::setHandler('memcache');
-		} elseif (extension_loaded('redis') && !empty($cache_setting['redis']['server']) && !empty($cache_setting['redis']['session'])) {
-			self::setHandler('redis');
+		} elseif (extension_loaded('Redis') && !empty($cache_setting['Redis']['server']) && !empty($cache_setting['Redis']['session'])) {
+			self::setHandler('Redis');
 		} else {
 			self::setHandler('mysql');
 		}
@@ -128,7 +128,7 @@ class WeSessionRedis extends WeSessionMemcache {
 	public function open($save_path, $session_name) {
 		$this->session_name = $session_name;
 
-		if (cache_type() != 'redis') {
+		if (cache_type() != 'Redis') {
 			trigger_error('Redis 扩展不可用或是服务未开启，请将 \$config[\'setting\'][\'redis\'][\'session\'] 设置为0 ');
 			return false;
 		}

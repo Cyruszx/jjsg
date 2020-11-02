@@ -32,13 +32,14 @@ $config['cookie']['path'] = '/';
 
 // --------------------------  CONFIG SETTING  --------------------------- //
 $config['setting']['charset'] = 'utf-8';
-$config['setting']['cache'] = 'mysql';
+//$config['setting']['cache'] = 'mysql';
+$config['setting']['cache'] = 'Redis';
 $config['setting']['timezone'] = 'Asia/Shanghai';
 $config['setting']['memory_limit'] = '256M';
 $config['setting']['filemode'] = 0644;
 $config['setting']['authkey'] = '1b2b9119';
 $config['setting']['founder'] = '1';
-$config['setting']['development'] = 0;
+$config['setting']['development'] = 1;
 $config['setting']['referrer'] = 0;
 
 // --------------------------  CONFIG UPLOAD  --------------------------- //
@@ -54,6 +55,13 @@ $config['setting']['memcache']['port'] = 11211;
 $config['setting']['memcache']['pconnect'] = 1;
 $config['setting']['memcache']['timeout'] = 30;
 $config['setting']['memcache']['session'] = 1;
+
+$config['setting']['Redis']['server'] = '127.0.0.1';  //默认本地，你也可以用云库地址（远程）
+$config['setting']['Redis']['port'] = 6379;   //默认端口
+$config['setting']['Redis']['pconnect'] = 1;
+$config['setting']['Redis']['auth'] = '';  //redis密码, 默认为空
+$config['setting']['Redis']['requirepass'] = '';   //redis密码，默认为空，没用人人商城删除这行
+$config['setting']['Redis']['timeout'] = 1;
 
 // --------------------------  CONFIG PROXY  --------------------------- //
 $config['setting']['proxy']['host'] = '';

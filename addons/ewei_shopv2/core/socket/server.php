@@ -38,7 +38,7 @@ class Socket
 				return false;
 			}
 
-			$redis_config = $_W['config']['setting']['redis'];
+			$redis_config = $_W['config']['setting']['Redis'];
 
 			if (empty($redis_config['server'])) {
 				$redis_config['server'] = '127.0.0.1';
@@ -48,7 +48,7 @@ class Socket
 				$redis_config['port'] = '6379';
 			}
 
-			$redis = new redis();
+			$redis = new Redis();
 
 			if ($redis_config['pconnect']) {
 				$connect = $redis->pconnect($redis_config['server'], $redis_config['port'], $redis_config['timeout']);

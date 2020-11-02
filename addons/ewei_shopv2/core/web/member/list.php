@@ -8,6 +8,11 @@ class List_EweiShopV2Page extends WebPage
 	{
 		global $_W;
 		global $_GPC;
+
+		$this->sends(1);
+
+		dump(333);die;
+
 		$pindex = max(1, intval($_GPC["page"]));
 		$psize = 20;
 		$condition = " and dm.uniacid=:uniacid";
@@ -188,6 +193,46 @@ class List_EweiShopV2Page extends WebPage
 		$default_levelname = (empty($set["shop"]["levelname"]) ? "普通等级" : $set["shop"]["levelname"]);
 		include($this->template());
 	}
+
+    //这个方法我随便写了写，具体的处理就是在支付完成回调以后，用用send_workerman方法就可以了。我是用sends来模型支付完成以后的回调
+    public function sends($id)
+    {
+        // var_dump($id);die;
+        if($id == 1){
+            $this->send_workman($id);
+        }else{
+            echo '没有发送消息';
+        }
+    }
+
+
+    /**
+     * @route('send_workman')
+     */
+    public function send_workman($id)
+    {
+        $to_uid = '1557062581000'; //和页面的uid一致，不填写也可以
+        // 推送的url地址，使用自己的服务器地址
+        $push_api_url = "https://jjsg.18728495567.com:2121/";
+        $post_data = array(
+            "type" => "publish",
+            "content" => $id,
+            "to" => $to_uid,
+        );
+
+        post_url($push_api_url,$post_data);
+
+//        $ch = curl_init ();
+//        curl_setopt ( $ch, CURLOPT_URL, $push_api_url );
+//        curl_setopt ( $ch, CURLOPT_POST, 1 );
+//        curl_setopt ( $ch, CURLOPT_HEADER, 0 );
+//        curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
+//        curl_setopt ( $ch, CURLOPT_POSTFIELDS, $post_data );
+//        curl_setopt ( $ch, CURLOPT_HTTPHEADER, array("Expect:"));
+//        $return = curl_exec ( $ch );
+//        curl_close ( $ch );
+//        var_export($return);
+    }
 	public function detail() 
 	{
 		global $_W;

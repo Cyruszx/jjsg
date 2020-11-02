@@ -23,9 +23,9 @@ if ($do == 'opcache') {
 			'status' => $cache_type == 'memcache',
 			'clear' => $clear
 		),
-		'redis' => array(
-			'support' => extension_loaded('redis'),
-			'status' => $cache_type == 'redis',
+		'Redis' => array(
+			'support' => extension_loaded('Redis'),
+			'status' => $cache_type == 'Redis',
 			'clear' => $clear
 		),
 		'eAccelerator' => array(
@@ -56,12 +56,12 @@ if ($do == 'opcache') {
 			}
 		}
 	}
-	if ($extensions['redis']['status']) {
+	if ($extensions['Redis']['status']) {
 		$redisobj = cache_redis();
 		if (!empty($redisobj) && method_exists($redisobj, 'info')) {
 						$status = $redisobj->info();
 			if (!empty($status)) {
-				$extensions['redis']['extra'] = '消耗峰值：' . round($status['used_memory_peak'] / 1048576, 2) . ' M/ 内存总量：' . round($status['used_memory'] / 1048576, 2) . ' M';
+				$extensions['Redis']['extra'] = '消耗峰值：' . round($status['used_memory_peak'] / 1048576, 2) . ' M/ 内存总量：' . round($status['used_memory'] / 1048576, 2) . ' M';
 			}
 		}
 	}

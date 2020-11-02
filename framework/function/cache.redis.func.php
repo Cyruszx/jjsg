@@ -9,11 +9,11 @@ defined('IN_IA') or exit('Access Denied');
 function cache_redis() {
 	global $_W;
 	static $redisobj;
-	if (!extension_loaded('redis')) {
+	if (!extension_loaded('Redis')) {
 		return error(1, 'Class Redis is not found');
 	}
 	if (empty($redisobj)) {
-		$config = $_W['config']['setting']['redis'];
+		$config = $_W['config']['setting']['Redis'];
 		$redisobj = new Redis();
 		try {
 			if ($config['pconnect']) {

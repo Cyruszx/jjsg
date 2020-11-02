@@ -18,7 +18,7 @@ function cache_type() {
 		if (!empty($config['server']) && !empty($config['port'])) {
 			if ($cache_type == 'memcache') {
 				$cacher = new Memcache();
-			} elseif ($cache_type == 'redis') {
+			} elseif ($cache_type == 'Redis') {
 				$cacher = new Redis();
 			}
 			$connect = $cacher->connect($config['server'], $config['port']);
